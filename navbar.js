@@ -42,6 +42,16 @@ var x = window.matchMedia("(max-width: 526px)")
 tabletMobile(x)
 x.addListener(tabletMobile)
 
+// collapse menu
+
+if (document.querySelector (".nav-bar-toggle-igac")) {
+    const collapseButon = document.querySelector (".collapse-buton");
+    const collapseMenu = document.querySelector (".collapse-menu");
+    collapseButon.addEventListener("click", (event) => {
+        collapseMenu.classList.toggle("expand");
+    });
+}
+
 /*navegacion*/
 const offset = 70;
 document.querySelectorAll('a[href^="#resultadosTermino"]').forEach(anchor => {

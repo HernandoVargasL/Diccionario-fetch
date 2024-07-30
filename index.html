@@ -61,28 +61,24 @@
                         <a id="inicio" href="#" onclick="gotoHome();">Inicio</a>
                     </li>
                     <li>
-                        <div class="d-flex align-items-center" style="cursor: pointer;" onclick="gotoET();">
-                            <img src="/images/img/entidades-territoriales.svg" class="icon-new3">
-                            <div class="border-new a">
-                                <h3>Entidades Territoriales</h3>                                
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex align-items-center" style="cursor: pointer;" onclick="gotoNG();">
-                            <img src="/images/img/nombres-geograficos.svg" class="icon-new3">
-                            <div class="border-new b">
-                                <h3>Nombres Geogr&aacute;ficos</h3>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="d-flex align-items-center" style="cursor: pointer;" onclick="gotoTG();">
-                            <img src="/images/img/terminos-geograficos.svg" class="icon-new3">
-                            <div class="border-new c">
-                                <h3>T&eacute;rminos Geogr&aacute;ficos</h3>                                
-                            </div>
-                        </div>
+                        <a class="collapse-buton">
+                            Acerca de
+                            <img src="/images/nav/ico-arrow.png" alt="">
+                        </a>
+                        <ul id="collapse-menu" class="collapse-menu">
+                            <li>
+                                <a href="/el_nuevo_diccionario_geografico.html">El nuevo diccionario geogr&#225;fico</a>
+                                <img src="/images/nav/ico-arrow.png" alt="">
+                            </li>
+                            <li>
+                                <a href="/el_rol_del_igac.html">El rol del IGAC</a>
+                                <img src="/images/nav/ico-arrow.png" alt="">
+                            </li>
+                            <li>
+                                <a href="/grandes_tematicas.html">Grandes tem&aacute;ticas</a>
+                                <img src="/images/nav/ico-arrow.png" alt="">
+                            </li>
+                        </ul>
                     </li>
                 </ul>
                 <button class='nav-bar-toggle-igac'>
@@ -95,6 +91,65 @@
             </div>
         </nav>
         <div class="calcite-map">
+            <div id="mainDiv" class="">
+                <!-- Search Panel -->
+                <div id="panelSearch" class="panel collapse">
+                    <div id="collapseSearch" class="panel-collapse">
+                        <div id="sidebar-container">
+                            <ul class="list-group">
+                                <a data-toggle="sidebar-colapse" class="sidebar-colapse-button d-none-new-a bg-dark list-group-item list-group-item-action d-flex align-items-center">
+                                    <div class="d-flex w-100 justify-content-start align-items-center icon-toggle-container">
+                                        <img src="/images/iconos/icon-toggle.svg" alt="search">
+                                    </div>
+                                </a>
+                                <div class="container-panel-body">
+                                    <div class="panel-body" style="background: var(--bg-igac-gris); padding: 0px;">
+                                        <div class="d-none-newest" id="containerFiltros">
+                                            <div id="panelSearchFiltros" class="panel panel-default" data-toggle="popover">
+                                                <div>
+                                                    <div class="content-tools-search">
+                                                        <div id="searchHeader" class="panel-heading">
+                                                            <h3 class="panel-title" style="display: inline-block;">Filtra resultados</h3>
+                                                            <a id="filtrosBarLimpiar2" href="#" onclick="limpiarFiltros();">Limpiar</a>
+                                                        </div>
+                                                    </div>
+                                                    <div id="searchBody" class="panel-body">
+                                                        <div id="searchBar" class="" style="background-color: unset;">
+                                                            <div id="typeahead__container" class="typeahead__container">
+                                                                <div class="typeahead__field">
+                                                                    <div style="width: 100%;" class=" btn-grouptypeahead__query">
+                                                                        <span class="searchTextBtn glyphicon glyphicon-search"></span>
+                                                                        <input id="input2" class="typeahead searchCtrl2" type="text" placeholder="Busca un topónimo" autocomplete="off">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p class="unidad-container">
+                                                            <label style="font-size: 14px;">Entidad Territorial:</label>
+                                                            <select class="form-control" id="searchFiltro" style="width: 100%;font-size: 14px;">
+                                                            </select>
+                                                        </p>
+                                                        <p>
+                                                            <label>Letra:</label>
+                                                            <select class="form-control" id="searchFiltroLetra" style="width: 100%;font-size: 14px;">
+                                                            </select>
+                                                        </p>
+                                                        <p>
+                                                            <label>Término geográfico</label>
+                                                            <select class="form-control" id="searchFiltroTipo" style="width: 100%;font-size: 14px;">
+                                                            </select>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="mapViewDiv" class="calcite-map-absolute main-small-map" style="background: white;">
                 <div id="homeDiv">
                     <div class="searchbarinput">
@@ -108,8 +163,8 @@
                         </div>
                     </div>
                     <section id="jumbotronHome" class="section-portada">
-                        <div class="container-portada principal">
-                            <div class="portada a container">
+                        <div class="container-portada">
+                            <div class="portada container">
                                 <div class="row justify-content-between">
                                     <div class="text-content align-items-center col-12 col-sm-6 col-md-6">
                                         <div>
@@ -137,7 +192,7 @@
                         <div class="container-portada">
                             <div class="portada container">
                                 <div class="row align-items-center justify-content-between">
-                                    <div class="text-content col-12 col-sm-8 col-md-8 columna">
+                                    <div class="text-content col-12 col-sm-6 col-md-6">
                                         <div>
                                             <div class="title">
                                                 Entidades Territoriales
@@ -149,7 +204,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-6 col-md-4 columna">
+                                    <div class="col-12 col-sm-6 col-md-6">
                                         <img src="/images/img/entidades-territoriales3.svg" alt="">
                                     </div>
                                 </div>
@@ -219,11 +274,13 @@
                             </div>
                         </div>
                     </section>
+
+
                     <section id="jumbotronNG" class="section-portada" style="display: none;">
                         <div class="container-portada">
                             <div class="portada container">
                                 <div class="row align-items-center justify-content-between">
-                                    <div class="text-content col-12 col-sm-6 col-md-8 columna">
+                                    <div class="text-content col-12 col-sm-6 col-md-6">
                                         <div>
                                             <div class="title">
                                                 Nombres Geogr&aacute;ficos - Top&oacute;nimos
@@ -235,7 +292,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-6 col-md-4 columna">
+                                    <div class="col-12 col-sm-6 col-md-6">
                                         <img src="/images/img/nombres-geograficos3.svg" alt="">
                                     </div>
                                 </div>
@@ -246,7 +303,7 @@
                         <div class="container-portada">
                             <div class="portada container">
                                 <div class="row align-items-center justify-content-between">
-                                    <div class="text-content col-12 col-sm-6 col-md-8 columna">
+                                    <div class="text-content col-12 col-sm-6 col-md-6">
                                         <div>
                                             <div class="title">
                                                 T&eacute;rminos Geogr&aacute;ficos
@@ -258,7 +315,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-6 col-md-4 columna">
+                                    <div class="col-12 col-sm-6 col-md-6">
                                         <img src="/images/img/terminos-geograficos3.svg" alt="">
                                     </div>
                                 </div>
@@ -311,6 +368,34 @@
                             </div>
                         </div>
                     </section>                    
+                    <div id="menuDiv" class="principal">
+                        <div class="container">
+                            <h2 class="subtitulo">Filtro por Temática</h2>
+                            <div class="row">
+                                <div class="col-md-4" style="cursor: pointer;" onclick="gotoET();">
+                                    <img src="/images/img/entidades-territoriales.svg" class="icon-new3">
+                                    <div class="border-new a">
+                                        <h3>Entidades Territoriales</h3>
+                                        <p>Sumérgete en la información de los Departamentos y Municipios de Colombia, cruciales para la organización y gestión local y nacional.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4" style="cursor: pointer;" onclick="gotoNG();">
+                                    <img src="/images/img/nombres-geograficos.svg" class="icon-new3">
+                                    <div class="border-new b">
+                                        <h3>Nombres Geogr&aacute;ficos</h3>
+                                        <p>Explora los topónimos, esenciales para describir y relacionarse con el entorno, preservando la historia y cultura locales en la cartografía.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4" style="cursor: pointer;" onclick="gotoTG();">
+                                    <img src="/images/img/terminos-geograficos.svg" class="icon-new3">
+                                    <div class="border-new c">
+                                        <h3>T&eacute;rminos Geogr&aacute;ficos</h3>
+                                        <p>Reconoce términos y conceptos esenciales de la geografía para comprender y describir nuestro mundo desde una perspectiva geográfica.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <section id="containerBusqueda" class="container contain-acercade-busqueda">
                         <div class="input-container">
                             <div class="search-container">
@@ -324,7 +409,16 @@
                                 </div>
                             </div>
                         </div>
-                    </section>                    
+                        <div class="acerca-de">
+                            <div class="items">
+                                <p>Acerca de:</p>
+                                <a href="/el_nuevo_diccionario_geografico.html">El nuevo diccionario geogr&#225;fico</a>
+                                <a href="/el_rol_del_igac.html">El rol del IGAC</a>
+                                <a href="/grandes_tematicas.html">Grandes tem&aacute;ticas</a>
+                                <a href="/terminos.html">T&eacute;rminos geogr&aacute;ficos</a>
+                            </div>
+                        </div>
+                    </section>
                     <div id="resultadosDiv" style="display: none;">
                         <div id="resultadosLoading" class="container" style="display: none;">
                             <div style="width: 100%;">
@@ -520,7 +614,7 @@
                                         <div class="form-group">
                                             <textarea class="form-control" id="qpDescField" placeholder="Descripción"></textarea>
                                         </div>
-                                        <a href="#" class="btn btn-primary">Enviar</a>
+                                        <a href="#" onclick="submitQP();" class="btn btn-primary">Enviar</a>
                                     </div>
                                 </div>
                             </div>
@@ -573,36 +667,6 @@
                             </div>                                                         
                         </div>
                     </div>
-                    <section id="homeSection">
-                        <div class="container">
-                            <h2 class="subtitulo">Ahora, una experiencia digital, viva e interconectada.</h2>
-                            <div class="row">
-                                <div class="col-md-6"></div>
-                                <div class="col-md-6">
-                                    <div class="border-new3 p-2">
-                                        <p>En el IGAC llevamos la búsqueda de la toponimia del país hacia una experiencia digital. Cientos de páginas de términos y nombres geográficos en volúmenes impresos, ahora publicadas en-línea para ser consultadas con un sólo clic desde la barra de búsqueda.</p>
-                                        <p>Más de 200.000 topónimos y términos geográficos expanden los límites de lo que percibimos de nuestro territorio. Conocer la realidad geográfica del país permite entenderlo de una manera más cercana y dimensionar sus riquezas. También, nos da una noción de su historia, de las sociedades que viven en sus regiones, y los significados que se construyen entorno a su paisaje geográfico.</p>
-                                        <p>A través de este diccionario, queremos expandir la noción del país que tenemos. Aunque nuestros límites y fronteras sean unos, con este nuevo capítulo digital del diccionario, queremos que todos perciban las infinitas riquezas geográficas que conforman el territorio y nos describen el lugar donde habitamos y cómo vivimos.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="container">
-                            <h2 class="subtitulo">
-                                Nuestros 3 objetivos y cómo una experiencia digital nos permite cumplirlos.
-                            </h2>
-                            <div class="col-md-4">
-                                <div class="card text-center">
-                                    <div class="card-title">
-                                        DISPONER
-                                    </div>
-                                    <p>
-                                        Todos los días se identifican nuevas entidades geográficas que existen en nuestro territorio. Está en nuestro ADN darles vida a través de su estudio, catalogación, documentación, y oficialización de su nombre. A través de esto, todos pueden conocerlas y usar su información como insumo valioso para generar nuevo conocimiento y promover el desarrollo del país.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
                     <div id="searchDiv" style="display: none;">
                         <div class="searchbarinput">
                             <div class="container">
@@ -683,9 +747,9 @@
                         <div class="container">
                             <h2 class="subtitulo">Accesos directos</h2>
                             <div class="row">
-                                <div class="col-md-6" style="cursor: pointer;" onclick="gotoNGAdd();">
+                                <div class="col-md-4" style="padding: 20px; cursor: pointer;" onclick="gotoNGAdd();">
                                     <img src="/images/img/agregar-nevo-termino-geografico.svg" class="icon-new">
-                                    <div class="border-new3 d">
+                                    <div class="border-new d">
                                         <h3>
                                             Agregar un Nuevo Nombre Geogr&aacute;fico
                                         </h3>
@@ -694,9 +758,9 @@
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-md-6" style="cursor: pointer;" onclick="gotoQP();">
+                                <div class="col-md-4" style="padding: 20px; cursor: pointer;" onclick="gotoQP();">
                                     <img src="/images/img/quejas-peticiones.svg" class="icon-new">
-                                    <div class="border-new3 f">
+                                    <div class="border-new f">
                                         <h3>
                                             Quejas y Peticiones
                                         </h3>
@@ -938,6 +1002,19 @@
                     $('#jumbotron1, #listResults, .searchbarinput, #tableSearchLetter_paginate, .list-leters-content, .contain-letters, .container-letters2, .footer, .termino-page, .toponimo-page, .contain-acercade-busqueda').toggleClass('d-none-new-2 d-none-newest-2');
                 }
             });
+        </script>
+        <script>
+            var pos = 0;
+            var el = document.getElementById("mainDiv");
+            var m = 0;
+            window.addEventListener("scroll", function () {
+                pos = window.pageYOffset;
+                if (pos > 0) {
+                    el.style.marginTop = -50 + "px";
+                } else {
+                    el.style.marginTop = 0 + "px";
+                }
+            }, false);
         </script>
     </body>
 </html>

@@ -79,17 +79,17 @@ $(document).ready(function () {
                 if (user.photoURL != "") {
                     $("#userPhoto,#userPhoto2").attr("src", user.photoURL);
                 } else {
-                    $("#userPhoto,#userPhoto2").attr("src", "./images/iconos/User.png");
+                    $("#userPhoto,#userPhoto2").attr("src", "/images/iconos/User.png");
                 }
             } else {
-                $("#userPhoto,#userPhoto2").attr("src", "./images/iconos/User.png");
+                $("#userPhoto,#userPhoto2").attr("src", "/images/iconos/User.png");
             }
         } else {
             currentUser = null;
             $("#logoutContainer").hide();
             $("#loginContainer").show();
             $("#userName,#userName2").html("Iniciar sesion");
-            $("#userPhoto,#userPhoto2").attr("src", "./images/iconos/User.png");
+            $("#userPhoto,#userPhoto2").attr("src", "/images/iconos/User.png");
         }
     }, function (error) {
         console.log(error);
@@ -613,8 +613,67 @@ function gotoQP() {
     $("#resultadosNO").hide();
     $("#resultadosTermino").hide();
     $("#jumbotronNGAdd").hide();
+    $("#qpNombresField").val("");
+    $("#qpApellidosField").val("");
+    $("#qpCorreoField").val("");
+    $("#qpTelefonoField").val("");
+    $("#qpDescField").val("");
 }
 
+function submitQP() {
+    if (!(($("#qpNombresField").val() != null) && ($("#qpNombresField").val() != ""))) {
+        $.alert("Debe ingresar un nombre");
+        return;
+    }
+    if (!(($("#qpApellidosField").val() != null) && ($("#qpApellidosField").val() != ""))) {
+        $.alert("Debe ingresar un apellido");
+        return;
+    }
+    if (!(($("#qpCorreoField").val() != null) && ($("#qpCorreoField").val() != ""))) {
+        $.alert("Debe ingresar un correo");
+        return;
+    }
+    if (!(($("#qpTelefonoField").val() != null) && ($("#qpTelefonoField").val() != ""))) {
+        $.alert("Debe ingresar un número de celular");
+        return;
+    }
+    if (!(($("#qpDescField").val() != null) && ($("#qpDescField").val() != ""))) {
+        $.alert("Debe ingresar una descripción");
+        return;
+    }
+    loading = $.dialog({
+        title: "Enviando", content: "Por favor, espere...",
+        buttons: {}, closeIcon: false
+    });
+
+    $.ajax({
+        url: web_service + "/diccionario?cmd=comentario&NOMBRE=" + $("#qpNombresField").val() + "&APELLIDOS=" + $("#qpApellidosField").val() + "&CORREO=" + $("#qpCorreoField").val() + "&CELULAR=" + $("#qpTelefonoField").val() + "&MENSAJE=" + btoa($("#qpDescField").val()),
+        type: 'POST',
+        dataType: 'json',
+        success: function (response) {
+            loading.close();
+            $.confirm({
+                title: "Quejas y Peticiones", content: "Mensaje enviado exitosamente.",
+                buttons: {
+                    Ok: function () {
+                        gotoHome();
+                    }
+                }, closeIcon: false
+            });
+        },
+        error: function (_data) {
+            loading.close();
+            $.confirm({
+                title: "Quejas y Peticiones", content: "No se pudo enviar el mensaje, intenta m&aacute;s tarde.",
+                buttons: {
+                    Ok: function () {
+                        
+                    }
+                }, closeIcon: false
+            });
+        }
+    });
+}
 
 function updateResultados() {
     $("#resultadosDiv").hide();
@@ -901,7 +960,7 @@ function getCounterFilter() {
 }
 
 function defaultUserPhoto() {
-    $("#userPhoto,#userPhoto2").attr("src", "./images/iconos/User.png");
+    $("#userPhoto,#userPhoto2").attr("src", "/images/iconos/User.png");
 }
 
 function signIn() {
@@ -1042,10 +1101,10 @@ function gotoLetter2(letra) {
     window.document.title = "Letra " + currentLetter + " - Diccionario Geográfico de Colombia";
     minAll();
     if (letra.toLowerCase() == "ñ") {
-        $("#letterImg").attr("src", "./images/DICCIONARIO/LETRAS/ntilde.png");
+        $("#letterImg").attr("src", "/images/DICCIONARIO/LETRAS/ntilde.png");
         $("#letterActual").html("<div class='letterSM letterSmNTILDE'></div>");
     } else {
-        $("#letterImg").attr("src", "./images/DICCIONARIO/LETRAS/" + letra.toLowerCase() + ".png");
+        $("#letterImg").attr("src", "/images/DICCIONARIO/LETRAS/" + letra.toLowerCase() + ".png");
         $("#letterActual").html("<div class='letterSM letterSm" + letra.toUpperCase() + "'></div>");
     }
     $("#letterHeader1").html(letra + "-" + letra.toLowerCase());
@@ -1144,7 +1203,7 @@ function gotoToponimo(id) {
                 $("#toponimoNombre").html(data.TERMINO.NOMBRE);
                 $("#toponimoDescripcion").html(data.TERMINO.DEFINICION);
 
-                var imageUrl = "./images/TERMINOS/" + data.TERMINO.ID_TERMINO + ".png";
+                var imageUrl = "/images/TERMINOS/" + data.TERMINO.ID_TERMINO + ".png";
                 $("#toponimoResultsTipoHeader").attr("src", imageUrl);
 
                 var strHTML = "";
@@ -1234,9 +1293,9 @@ function gotoTermino(id) {
                     }
                 }
                 if (data.nombre.NOMBRE.toLowerCase() == "ñ") {
-                    $("#terminoLetter").attr("src", "./images/DICCIONARIO/LETRAS/ntilde.png");
+                    $("#terminoLetter").attr("src", "/images/DICCIONARIO/LETRAS/ntilde.png");
                 } else {
-                    $("#terminoLetter").attr("src", "./images/DICCIONARIO/LETRAS/" + data.nombre.NOMBRE.toLowerCase().substring(0, 1) + ".png");
+                    $("#terminoLetter").attr("src", "/images/DICCIONARIO/LETRAS/" + data.nombre.NOMBRE.toLowerCase().substring(0, 1) + ".png");
                 }
                 var strHTML = "";
                 strHTML = strHTML + "<div style='padding-bottom: 10px;'>";
@@ -1738,7 +1797,7 @@ function gotoTerminoSearch() {
                 success: function (data) {
                     if (data.status) {
 
-                        var imageUrl = "./images/TERMINOS/" + data.TERMINO.ID_TERMINO + ".png";
+                        var imageUrl = "/images/TERMINOS/" + data.TERMINO.ID_TERMINO + ".png";
                         $("#listResultsTipoHeader").css("background", "url(" + imageUrl + ")");
                         $("#listResultsTipoHeader").css("background-color", getColorByTipo(data.TERMINO.NOMBRE));
                         $("#listResultsTipoHeader").show();
@@ -1794,9 +1853,9 @@ function gotoTerminoSearch() {
 
                     var imageUrl;
                     if (currentLetterSearch == "Ñ") {
-                        imageUrl = "./images/LETRAS/NTILDE.png";
+                        imageUrl = "/images/LETRAS/NTILDE.png";
                     } else {
-                        imageUrl = "./images/LETRAS/" + currentLetterSearch + ".png";
+                        imageUrl = "/images/LETRAS/" + currentLetterSearch + ".png";
                     }
                     $("#listResultsLetraHeader").css("background", "url(" + imageUrl + ")");
                     $("#listResultsLetraHeader").show();
@@ -1964,7 +2023,7 @@ function gotoTerminoSearch() {
                             dataCodigo = dataRow[i].CODIGO.substring(0, 2);
                         };
                         var imageUrl;
-                        imageUrl = "./images/DEPTOS/" + dataRow[i].CODIGO.substring(0, 2) + ".png";
+                        imageUrl = "/images/DEPTOS/" + dataRow[i].CODIGO.substring(0, 2) + ".png";
                         strHTML = strHTML + "<div class='media-left' onclick='gotoTermino(" + dataRow[i].ID_NOMBRES_GEO + ");pushState();'>";
                         strHTML = strHTML + "<div>";
                         strHTML = strHTML + "<img class='media-object media-list-object' src='" + imageUrl + "'>";
@@ -2816,7 +2875,7 @@ function initMap() {
             $("#ngaddY").val(reprojectedCoordsNew[0]);
             updateCoordenada();
         });
-        redMarker = new esri.PictureMarkerSymbol("./images/iconos/Pin_Red.png", 21, 30);
+        redMarker = new esri.PictureMarkerSymbol("/images/iconos/Pin_Red.png", 21, 30);
     });
 }
 

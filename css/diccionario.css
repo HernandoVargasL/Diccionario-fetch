@@ -740,6 +740,35 @@ a:focus, a:hover {
     margin: 0px;
 }
 
+#mainDiv {
+    height: calc(100vh);
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    overflow-y: auto;
+    z-index: 99;
+    position: fixed;
+}
+#searchDiv {
+    padding-bottom: 40px;
+}
+#mainDiv .panel {
+    background: inherit;
+}
+#mainDiv .panel .icon-toggle-container {
+    width: 25px;
+}
+#mainDiv .panel .icon-toggle-container img {
+    width: 100%;
+}
+.main-small {
+    width: 350px;
+}
+
+.main-small-map {
+    width: calc(100vw - 350px);
+    left: 350px !important;
+}
+
 .panel-resultados-thumb {
     height: 100px;
     border-radius: 10px;
@@ -1088,6 +1117,15 @@ a:focus, a:hover {
     width: 100%;
 }
 
+.calcite-map .calcite-map-absolute #homeDiv {
+    
+}
+@media (min-width: 768px) {
+    .calcite-map .calcite-map-absolute #homeDiv {
+        
+    } 
+}
+
 .calcite-nav-bottom .calcite-panels {
     top: 50px;
     left: 0px;
@@ -1351,13 +1389,12 @@ select {
 }
 
 .contain-acercade-busqueda {
-    margin-top: -30px;
     max-width: 50% !important;
-    margin-bottom: 0;
+    padding-bottom: 30px;
 }
 
 #resultadosDiv {
-    padding-top: 20px;
+    overflow-x: hidden;
 }
 
 .contain-acercade-busqueda.d-none-newest-2 {
@@ -1392,6 +1429,21 @@ select {
     color: #ccc;
 }
 
+.contain-acercade-busqueda .acerca-de {
+    justify-content: center;
+    padding: 10px 15px;
+}
+
+.contain-acercade-busqueda .acerca-de p {
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+.contain-acercade-busqueda .acerca-de a {
+    padding-left: 10px;
+    color: var(--azul-igac);
+}
+  
 .contain-letters .call-to-action {
     margin-top: 50px;
     margin-bottom: 20px;
@@ -3182,6 +3234,11 @@ select {
     font-weight: bold !important;
 }
 
+
+ {
+    color: #000000;
+}
+
 #terminoResultsLetraContenido b, li {
     font-size: 1rem;
     color: #000;
@@ -4683,12 +4740,13 @@ select {
                 width: 120px;
             }
             
-#menuDiv, #homeSection {
+#menuDiv {
     padding-top: 30px;
     margin-bottom: 30px;
+    background: #f7f7f7;
 }
 
-.subtitulo {
+#menuDiv .subtitulo {
     color: var(--azul-igac);
     text-align: center;
     margin: 0 0 20px;
@@ -4710,45 +4768,42 @@ select {
     justify-content: center;
 }
 
-.border-new h3 {
-    font-size: 1rem;
-}
-
+.border-new,
 .border-new2,
 .border-new3,
 .border-new4,
 #resultadosDiv #terminoOtrosDiv .card {
     height: 100%;
     border-radius: 10px;
-    padding: 120px 20px 20px 20px;
+    padding: 90px 20px 20px 20px;
     text-align: center;
     background: #f2f2f2;
     font-size: 18px;
     box-shadow: 8px 7px 10px #0000001c;
 }
 
-#homeSection .text-conatiner {
-    margin: auto;
+.border-new.a h3 {
+    color: #7ba982;
 }
 
-#homeSection .border-new3 {
-    padding: 0 20px 20px;
-    color: #666666;
-    background: transparent;
-    box-shadow: none;
-    text-align: left;
+.border-new.b h3 {
+    color: #6a5b77;
 }
 
-.border-new h3 {
-    margin: 0;
-    color: #666666;
+.border-new.c h3 {
+    color: #5b759d;
 }
-.border-new3.d h3 {
+
+.border-new.d h3 {
     color: #d77271;
 }
 
-.border-new3.f h3 {
+.border-new.f h3 {
     color: #e2af90;
+}
+
+.border-new h3 {
+    font-size: 1.4rem;
 }
 
 .border-new p {
@@ -4856,8 +4911,16 @@ select {
     width: 30%;
     position: absolute;
     z-index: 100;
-    top: -22px;
-    left: calc(50% - 88px);
+    top: 5px;
+    left: calc(50% - 58px);
+}
+
+.icon-new3 {
+    width: 30%;
+    position: absolute;
+    left: calc(50% - 58px);
+    top: -15px;
+    z-index: 100;
 }
 
 .icon-new4 {
@@ -5150,4 +5213,8 @@ select {
 
 .map .logo-sm {
     display: none;
+}
+
+#toponimoNombre {
+    text-transform: capitalize;
 }
